@@ -1,0 +1,27 @@
+<div class="data-table">
+    <p-dataTable [value]="menu" expandableRows="true">
+        <p-column [style]="{width:'8%', 'border-right-style':'none'}" expander="true" styleClass="col-icon"></p-column>
+        <p-column [style]="{'border-left-style':'none'}" field="menuCode" header="Menu Code" [sortable]="true"></p-column>
+        <p-column field="menuName" header="Menu Name" [sortable]="true"></p-column>
+        <ng-template let-menu pTemplate="rowexpansion">
+            <div class="ui-grid ui-grid-responsive ui-fluid" style="font-size:16px;padding:0px">
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-12">
+                        <div class="ui-grid ui-grid-responsive ui-grid-pad">
+                            <p-dataTable [value]="menu.menuList" expandableRows="false">
+                                <p-column field="itemCode" header="Item Code" [sortable]="true"></p-column>
+                                <p-column field="itemName" header="Item Name" [sortable]="true"></p-column>
+                                <p-column field="itemPrice" header="Item Price" [sortable]="true"></p-column>
+                                <div class="ui-grid-row">
+                                    <div class="ui-grid-col-4">{{menu.menuList.itemName}}</div>
+                                    <div class="ui-grid-col-4">{{menu.menuList.itemCode}}</div>
+                                    <div class="ui-grid-col-4">{{menu.menuList.itemPrice}}</div>
+                                </div>   
+                            </p-dataTable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataTable>
+</div>
